@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Sabía que dirías que sí!</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+        .mensaje {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .contenedor {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 80%;
+            max-width: 600px;
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            
+        }
+        .disco {
+            width: 100px;
+            height: 100px;
+            background: url('assets/img/disco.png') no-repeat center/cover;
+            border-radius: 50%;
+            animation: girar 5s linear infinite;
+        }
+        @keyframes girar {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        iframe {
+            width: 1px;
+            height: 1px;
+            position: absolute;
+            top: -9999px;
+        }
+        #playButton {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #playButton:hover {
+            background-color: #e60000;
+        }
+    </style>
+</head>
+<body>
+    <div class="mensaje">¡Sabía que dirías que sí! Te AMOOOOOOO <3</div>
+    <div class="contenedor">
+        <div class="letra">
+            <p id="lyrics"></p>
+        </div>
+        <div class="disco"></div>
+    </div>
+    
+    <audio id="audio" autoplay>
+        <source src="assets/mp3/Billie Eilish - BIRDS OF A FEATHER (Official Music Video).mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const lyrics = [
+            { time: 3.8, text: "I want you to stay" },
+            { time: 8, text: "'Til I'm in the grave" },
+            { time: 12, text: "'Til I rot away, dead and buried" },
+            { time: 16, text: "''Til I'm in the casket you carry" },
+            { time: 21, text: "If you go, I'm going too, uh" },
+            { time: 26, text: "'Cause it was always you, alright" },
+            { time: 31, text: "And if I'm turning blue, please don't save me" },
+            { time: 35, text: "Nothing left to lose without my baby" },
+            { time: 41, text: "Birds of a feather, we should stick together, I know" },
+            { time: 46, text: "I said I'd never think I wasn't better alone" },
+            { time: 50, text: "Can't change the weather, might not be forever" },
+            { time: 54, text: "But if it's forever, it's even better" },
+            { time: 60, text: "And I don't know what I'm crying for" },
+            { time: 64, text: "I don't think I could love you more" },
+            { time: 69, text: "It might not be long, but baby, I" },
+            { time: 75, text: "I'll love you 'til the day that I die" },
+            { time: 80, text: "'Til the day that I die" },
+            { time: 85, text: "'Til the light leaves my eyes" },       
+            { time: 90, text: "'Til the day that I die" },
+            { time: 95, text: "I want you to see, hm" },
+            { time: 99, text: "How you look to me, hm" },
+            { time: 104, text: "You wouldn't believe if I told ya" },
+            { time: 108, text: "You would keep the compliments I throw ya" },
+            { time: 113, text: "But you're so full of shit, uh" },
+            { time: 118, text: "Tell me it's a bit, oh" },
+            { time: 122, text: "Say you don't see it, your mind's polluted" },
+            { time: 127, text: "Say you wanna quit, don't be stupid" },
+            { time: 133, text: "And I don't know what I'm crying for" }, 
+            { time: 138, text: "I don't think I could love you more" },
+            { time: 142, text: "Might not be long, but baby, I" },
+            { time: 149, text: "Don't wanna say goodbye" },
+            { time: 151, text: "Birds of a feather, we should stick together, I know ('til the day that I die)" },
+            { time: 156, text: "I said I'd never think I wasn't better alone ('til the light leaves my eyes)" },
+            { time: 160, text: "Can't change the weather, might not be forever ('til the day that I die)" },
+            { time: 164, text: "But if it's forever, it's even better" },
+            { time: 169, text: "I knew you in another life" },
+            { time: 174, text: "You had that same look in your eyes" },
+            { time: 179, text: "I love you, don't act so surprised" }, 
+        ];
+
+        const audio = document.getElementById('audio');
+        const lyricsElement = document.getElementById('lyrics');
+
+        audio.addEventListener('timeupdate', function() {
+            let currentTime = audio.currentTime;
+            lyrics.forEach(line => {
+                if (currentTime >= line.time && currentTime < line.time + 5) { // 5 segundos de duración por línea
+                    lyricsElement.textContent = line.text;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

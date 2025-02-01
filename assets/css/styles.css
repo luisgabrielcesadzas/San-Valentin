@@ -1,0 +1,165 @@
+* {
+  min-width: 0;
+  font: inherit;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+video,
+svg {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background-color: #fbe4e1; /* Rosa pastel suave */
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container-letter {
+  position: relative;
+}
+
+.cover {
+  position: absolute;
+  border-left: 200px solid transparent;
+  border-right: 200px solid transparent;
+  border-top: 100px solid #fcbdc5; /* Rosa claro pastel */
+  border-bottom: 100px solid transparent;
+  transition: transform .75s;
+  transform-origin: top;
+}
+
+.paper {
+  position: absolute;
+  padding: 1.5rem;
+  line-height: 2rem;
+  right: 5px;
+  z-index: -1;
+  background: #fff9f6; /* Blanco suave */
+  width: 390px;
+  height: 180px;
+  transition: all .75s;
+}
+
+.letter {
+  border-left: 200px solid #ffd4d8; /* Rosa claro pastel */
+  border-right: 200px solid #ffd4d8; /* Rosa claro pastel */
+  border-top: 100px solid transparent;
+  border-bottom: 100px solid #ffcad1; /* Rosa más suave */
+}
+
+.options {
+  display: flex;
+  gap: 5rem;
+}
+
+.options button {
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 3px;
+  background: #cfbd9f; /* Beige suave */
+  padding: 0.5rem 1rem;
+  border: 1px solid #b39d79;
+  cursor: pointer;
+}
+
+.options button:hover {
+  background: #a38a65; /* Beige más oscuro */
+  color: white;
+}
+
+.open-cover {
+  transform: rotatex(180deg);
+}
+
+.open-paper {
+  animation: openPaper .5s forwards;
+}
+
+@keyframes openPaper {
+  0% {
+      top: 0;
+  }
+  100% {
+      top: -150px; 
+  }
+}
+
+.close-paper {
+  animation: closePaper .5s forwards;
+}
+
+@keyframes closePaper {
+  0% {
+      top: -150px; 
+  }
+  100% {
+      top: 0;
+  }
+}
+
+.heart {
+  display: none;
+  position: absolute;
+  top: 25%;
+  left: 46.5%;
+  margin: auto;
+  font-size: 3rem;
+  color: #fe3334;
+  animation: crecer 1s forwards ;
+}
+
+@keyframes crecer {
+  0% {
+      scale: 1;
+      opacity: 1;
+  }
+  100% {
+      scale: 3;
+      opacity: 0;
+  }
+}
+
+.response-btn {
+  color: white;
+  font-weight: 600;
+  border-radius: 3px;
+  background: #ff3234; /* Rojo para el botón "No" */
+  padding: 0.5rem 1rem;
+  border: 1px solid #ff3234;
+  cursor: pointer;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.response-btn:hover {
+  background: #e60000; /* Rojo más oscuro */
+  color: white;
+}
+
+/* No button specific styling */
+#no {
+  background: #ff3234; /* Rojo */
+  border: 1px solid #ff3234; /* Rojo */
+  color: white;
+}
+
+#no:hover {
+  background: #e60000; /* Rojo más oscuro */
+}
